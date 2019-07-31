@@ -2,24 +2,28 @@
   text-align: center;
   height: 100vh;
   min-height: 550px;
-  background-color: #CEB9FE;
+  background-color: white;
   overflow: hidden;
 }
+.App-logo{
+  width: 300px !important; 
+  height: 300px !important; 
+}
 
-.App-skew {
+/* .App-skew {
   min-height: 50vh;
   width: 100%;
-  -ms-transform: rotate(-16deg) skew(-16deg); /* IE 9 */
-  -webkit-transform: rotate(-16deg) skew(-16deg); /* Safari */
-  transform: rotate(-16deg) skew(-16deg); /* Standard syntax */
+  -ms-transform: rotate(-16deg) skew(-16deg); 
+  -webkit-transform: rotate(-16deg) skew(-16deg); 
+  transform: rotate(-16deg) skew(-16deg); 
   overflow: hidden;
   position: relative;
-  background-color: #B6A4E2;
   height: 650px;
   width: 2000px;
   top: -222px;
   left: -200px;
-}
+} */
+
 header {
   z-index: 999;
   position: absolute;
@@ -47,8 +51,8 @@ header {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-@media only screen and (max-width: 40em) {
+/* @media only screen and (max-width: 40em) {
   .App-skew {
     height: 450px;
   }
-}
+} */
