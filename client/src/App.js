@@ -58,8 +58,8 @@ class App extends Component {
     return(
       <Router>
         <div className="App">
-          <section className="App-skew">
-          </section>
+          {/* <section className="App-skew">
+          </section> */}
           <header>
             <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">USER ACCOUNT DEMO</h1>
