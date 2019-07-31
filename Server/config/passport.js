@@ -74,7 +74,6 @@ module.exports = (passport) => {
                 }
             });
         });
-
     }));
 
     // =========================================================================
@@ -113,6 +112,5 @@ module.exports = (passport) => {
             // all is well, return successful user
             return done(null, user);
         });
-
     }));
 };
