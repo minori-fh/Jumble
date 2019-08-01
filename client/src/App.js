@@ -6,7 +6,7 @@ import GuestRoutes from './routes/GuestRoutes'
 import Actions from "./utils/API";
 
 
-import logo from './jumble.gif';
+// import logo from './jumble.gif';
 import './App.css';
 
 class App extends Component {
@@ -38,9 +38,9 @@ class App extends Component {
     return(
       <Router>
         <div className="App">
-          <header>
+          {/* <header>
             <img src={logo} className="App-logo" alt="logo" />
-          </header>
+          </header> */}
           <div className="content">
             <Switch>
               <Route path="*" component={GuestRoutes} />
@@ -58,10 +58,10 @@ class App extends Component {
         <div className="App">
           {/* <section className="App-skew">
           </section> */}
-          <header>
+          {/* <header>
             <img src={logo} className="App-logo" alt="logo" />
             <h1 className="App-title">USER ACCOUNT DEMO</h1>
-          </header>
+          </header> */}
           <div className="content">
             <Switch>
               <Route exact path="/" component={UserRoutes} />

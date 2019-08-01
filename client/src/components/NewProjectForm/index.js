@@ -1,13 +1,24 @@
 import React from "react"
 
-function NewProjectForm(){
-    return(
+function NewProjectForm() {
+    
+    
+    
+    
+    
+    
+    return (
         <div>
-            <input></input>
-            <input></input>
-            <input></input>
-            <input></input>
-            <input></input>
+            <form>
+                <input
+                type ="text"
+                placeholder="Project Name"
+                /> 
+                <input
+                type ="text"
+                placeholder="Project Budget"
+                />
+            </form>
         </div>
     )
 }
