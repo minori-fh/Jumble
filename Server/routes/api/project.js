@@ -6,7 +6,7 @@ const project = require("../../controllers/project-controller");
 // =====================================
 router.route("/")
   .get(project.findAll)
-  .post(project.create)
+  .post(project.create);
 
 router.route("/:id")
     .get(project.findOne)
