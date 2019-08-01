@@ -21,7 +21,7 @@
  
  /* Grid Classes */
  .row {
-    padding: 0 125px;
+    /* padding: 0 125px; */
     display: grid;
     grid-template-columns: repeat(12, 1fr);
  }
