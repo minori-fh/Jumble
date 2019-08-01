@@ -1,15 +1,21 @@
-import React from "react"
+import React, { Component } from 'react';
+import "./style.css"
 
-function NewProjectForm() {
+class NewProjectForm extends Component {
+    
+    state = {
+        title:"",
+        budget:""
+    }
     
     
+
+
     
-    
-    
-    
+    render(){
     return (
         <div>
-            <form>
+            <form id="styling">
                 <input
                 type ="text"
                 placeholder="Project Name"
@@ -21,6 +27,7 @@ function NewProjectForm() {
             </form>
         </div>
     )
+    }
 }
 
 export default NewProjectForm

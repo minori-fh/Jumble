@@ -9,7 +9,8 @@ import Dashboard from '../../../components/Dashboard';
 import { Col, Row } from "../../../components/Grid"
 import Navbar from "../../../components/Navbar"
 import Sidenav from "../../../components/Sidenav"
-import NewProjectForm from "../../../components/NewProjectForm";
+import Button from '../../../components/ProjectButtons';
+import NewProjectForm from '../../../components/NewProjectForm'
 
 //need to import components here
 
@@ -18,7 +19,8 @@ class Profile extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            userAccount: false
+            userAccount: false,
+            edit: false
         }
     }
 
@@ -56,6 +58,20 @@ class Profile extends Component {
     //     )
     // }
 
+    handleEdit = () => {
+        console.log("hi")
+        if (this.state.edit === false) {
+            this.setState({
+                edit: true
+            })
+        }
+        else {
+            this.setState({
+                edit: false
+            })
+        }
+    }
+
     render() {
         return (
             // <Panel>
@@ -64,12 +80,13 @@ class Profile extends Component {
 
             <Row>
                 <Col className="l3">
-                    <Navbar/>
-                    <Sidenav/>
-                    <Dashboard >
-                        <NewProjectForm />
-                    </Dashboard>
-
+                    <Navbar />
+                    <Sidenav>
+                        <Button edit={this.handleEdit} />
+                    </Sidenav>
+                    {!this.state.edit ?
+                        <Dashboard /> : <NewProjectForm />
+                    }
                 </Col>
             </Row>
 
