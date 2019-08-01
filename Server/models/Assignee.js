@@ -17,9 +17,9 @@ module.exports = (sequelize, DataTypes) => {
             }
         });
 
-        Assignee.hasMany(models.Task, {
+        // Assignee.hasMany(models.Task, {
 
-        });
+        // });
     };
 
     return Assignee;
