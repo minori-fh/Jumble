@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import Actions from "../../../utils/API";
 import "./Profile.css";
@@ -5,7 +6,11 @@ import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-d
 import Panel from '../../../components/Panel';
 import Button from '../../../components/Button';
 import Dashboard from '../../../components/Dashboard';
+import { Col, Row } from "../../../components/Grid"
+import Navbar from "../../../components/Navbar"
+import Sidenav from "../../../components/Sidenav"
 //need to import components here
+
 
 class Profile extends Component {
     constructor(props) {
@@ -23,6 +28,7 @@ class Profile extends Component {
                 this.setState({
                     isLoggedIn: response
                 })
+
 
                 if (!response) {
                     window.location.href = "/"
@@ -54,7 +60,12 @@ class Profile extends Component {
             //     {this.renderAccountContent()}
             // </Panel>
             <Dashboard>
-                <h1>Hi</h1>
+                <Row>
+                    <Col className="l3">
+                        <Navbar/>
+                        <Sidenav/>
+                    </Col>
+                </Row>
             </Dashboard>
         )
     }

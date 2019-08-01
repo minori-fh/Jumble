@@ -5,7 +5,6 @@ class Input extends React.Component {
 	
 	render(){
 		const inputStyles = {
-			background: `url(./assets/img/${this.props.img}.png) no-repeat 16px`,
 			backgroundSize: `16px`
 		}
 		return(

@@ -1,0 +1,11 @@
+#centerButtons{
+ width : 120px;
+
+}
+.sideBtn{
+    width: 100px;
+    border-radius: 8px;
+    background: linear-gradient(navy, white);
+    color:black;
+    font-size: 14px
+}
