@@ -8,6 +8,8 @@ import Input from '../../../components/Input'
 import Button from '../../../components/Button'
 import { Row, Col } from "../../../components/Grid";
 
+import logo from '../../../../src/jumble.gif';
+
 class Home extends Component {
     constructor(props){
         super(props)
@@ -109,9 +111,12 @@ class Home extends Component {
     renderAuthForm = () => {
         return(
             <Row id='home-form-grid'>
-                <Col className='xl4'>
+                <Col className='xl6' id='main-left-col'>
                 </Col>
-                <Col id="home-form-col" className='xl4'>
+                <Col id="home-form-col" className='xl6'>
+                    <header>
+                        <img src={logo} className="App-logo" alt="logo" />
+                    </header>
                     <form id="home-form" ref="submitForm" onClick={this.resetError}>
                         <p id="form-error" className={this.state.errClassName}>{this.state.errorMsg}</p>
                         <Input 
@@ -143,8 +148,6 @@ class Home extends Component {
                                 signup
                         </Button>
                     </form>
-                </Col>
-                <Col className='xl4'>
                 </Col>
             </Row>
 
