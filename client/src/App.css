@@ -8,10 +8,6 @@
   background-repeat: none;
   background-size: 100vw 100vh; 
 }
-.App-logo{
-  width: 200px !important; 
-  height: 200px !important;
-}
 
 /* .App-skew {
   min-height: 50vh;
@@ -31,7 +27,7 @@ header {
   z-index: 999;
   position: absolute;
   width: 100%;
-  top: 60px;
+  bottom: 65%;
   color: #fff;
   text-transform: uppercase;
 }
