@@ -10,15 +10,6 @@ module.exports = {
             res.json(dbAssignee);
         });
     },
-    findOne: function (req, res) {
-        db.Assignee.findOne({
-            where: {
-                id: req.params.id
-            }
-        }).then(function (dbAssignee) {
-            res.json(dbAssignee);
-        });
-    },
     create: function (req, res) {
         db.Assignee.create({
             name: req.body.name
@@ -33,6 +24,15 @@ module.exports = {
             }
         }).then(function (dbAssignee) {
             res.json(dbAssignee);
+        });
+    },
+    remove: function (req, res) {
+        db.Assignee.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbProject) {
+            res.json(dbProject);
         });
     }
 };
