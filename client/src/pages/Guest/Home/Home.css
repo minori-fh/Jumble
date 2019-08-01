@@ -1,0 +1,14 @@
+#home-form-grid{
+    margin-top: 20%; 
+}
+
+#home-form {
+    position: absolute; 
+    z-index: 999; 
+    width: 100%; 
+}
+
+#home-form-col{
+    position: relative; 
+    text-align: center; 
+}

@@ -1,19 +1,20 @@
 .btn {
-	background-color: #FFEC57;
-	border: 1px solid #FFEC57;
-	border-radius: 35px;
+	background-color: rgb(47, 47, 104);
+	border-radius: 8px; 
+	color: white; 
 	padding: 10px;
-	width: 45%;
-	font-size: 16px;
+	width: 30%;
+	font-size: 14px;
 	margin: 5% 0;
 	font-weight: 400;
-	text-transform: uppercase;
+	margin-left: 4%; 
+	margin-right: 4%; 
 }
 .btn.left {
-	float: left;
+	margin-right: 1%;
 }
 .btn.right {
-	float: right;
+	margin-left: 1%; 
 }
 .btn.none {
 	float: none;
