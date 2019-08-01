@@ -5,7 +5,8 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false
-        },
+        }
+    }, {
         timestamps: false
     });
 
@@ -15,10 +16,6 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: {
                 allowNull: false
             }
-        });
-
-        Assignee.hasMany(models.Task, {
-
         });
     };
 
