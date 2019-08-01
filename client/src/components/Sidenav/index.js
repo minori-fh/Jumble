@@ -1,13 +1,13 @@
 import React from "react"
 import "./style.css"
 // import { Col, Row } from "../Grid"
+import Button from "../../components/ProjectButtons"
 
 function Sidenav() {
     return(
-    <div>
+    <div >
         <nav className="navBar">
-            <button>Project 2</button>
-            <button>Project 3</button>
+           <Button/>
         </nav>
     </div>
     )

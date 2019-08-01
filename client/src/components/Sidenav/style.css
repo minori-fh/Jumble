@@ -1,4 +1,9 @@
 .navBar{
     height:100vh;
     display:flex;
+    background-color: white;
+    border-right:2px solid lightgray
+}
+#project1{
+    width:50px;
 }
