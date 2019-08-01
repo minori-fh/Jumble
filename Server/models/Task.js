@@ -9,9 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         deadline: {
             type: DataTypes.DATE,
             allowNull: true
-        },
-        createdAt: Sequelize.DATE,
-        updatedAt: Sequelize.DATE
+        }
     });
 
     Task.associate = function (models) {
@@ -20,10 +18,6 @@ module.exports = (sequelize, DataTypes) => {
             foreignKey: {
                 allowNull: false
             }
-        });
-
-        Task.hasMany(models.Assignee, {
-            onDelete: "cascade"
         });
     };
 

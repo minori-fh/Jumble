@@ -33,9 +33,10 @@ module.exports = (sequelize, DataTypes) => {
         Security: {
             type: DataTypes.INTEGER,
             allowNull: true
-        },
-        timestamps: false
-    });
+        }
+    }, {
+            timestamps: false
+        });
 
     Budget.associate = function (models) {
 

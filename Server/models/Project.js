@@ -5,9 +5,7 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false
-        },
-        createdAt: Sequelize.DATE,
-        updatedAt: Sequelize.DATE
+        }
     });
 
     Project.associate = function (models) {
@@ -17,15 +15,6 @@ module.exports = (sequelize, DataTypes) => {
                 allowNull: false
             }
         });
-
-        Project.hasMany(models.Task, {
-
-        });
-
-        Project.hasOne(models.Budget, {
-
-        });
-
     };
 
     return Project;
