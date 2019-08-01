@@ -21,9 +21,9 @@ module.exports = {
     },
     create: function (req, res) {
         db.Assignee.create({
-            name: req.params.name
-        }).then(function (newBudget) {
-            console.log(newBudget)
+            name: req.body.name
+        }).then(function (newAssignee) {
+            console.log(newAssignee)
         })
     },
     update: function (req, res) {

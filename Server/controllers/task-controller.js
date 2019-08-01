@@ -2,7 +2,7 @@ var db = require("../models");
 
 module.exports = {
     findOne: function (req, res) {
-        db.Budget.findOne({
+        db.Task.findOne({
             where: {
                 ProjectId: req.params.id
             }
@@ -11,22 +11,15 @@ module.exports = {
         });
     },
     create: function (req, res) {
-        db.Budget.create({
-            total: req.body.total,
-            Marketing: req.body.Marketing,
-            HR: req.body.HR,
-            Design: req.body.Design,
-            Engineering: req.body.Engineering,
-            Sales: req.body.Sales,
-            Finance: req.body.Finance,
-            Security: req.body.Security,
-            ProjectId: req.params.id
-        }).then(function (newBudget) {
-            console.log(newBudget)
+        db.Task.create({
+            task: req.body.task,
+            deadline: req.body.deadline
+        }).then(function (newTask) {
+            console.log(newTask)
         })
     },
     update: function (req, res) {
-        db.Budget.update(req.body, {
+        db.Task.update(req.body, {
             where: {
                 id: req.params.id
             }
