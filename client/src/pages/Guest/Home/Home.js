@@ -111,8 +111,8 @@ class Home extends Component {
             <Row id='home-form-grid'>
                 <Col className='xl4'>
                 </Col>
-                <Col className='xl4'>
-                    <form ref="submitForm" onClick={this.resetError}>
+                <Col id="home-form-col" className='xl4'>
+                    <form id="home-form" ref="submitForm" onClick={this.resetError}>
                         <p id="form-error" className={this.state.errClassName}>{this.state.errorMsg}</p>
                         <Input 
                             elementID="user-email" 
@@ -134,13 +134,13 @@ class Home extends Component {
                             handleChange={this.handleInputChange}/>
                         <Button 
                             handleBtnClick={this.handleSubmitAuth} 
-                            float="left">
-                                LOGIN
+                            >
+                                login
                         </Button>
                         <Button 
                             handleBtnClick={this.handleSubmitAuth} 
-                            float="right">
-                                SIGNUP
+                            >
+                                signup
                         </Button>
                     </form>
                 </Col>
