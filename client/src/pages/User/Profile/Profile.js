@@ -82,7 +82,7 @@ class Profile extends Component {
                 <Col className="l3">
                     <Navbar />
                     <Sidenav>
-                        <Button edit={this.handleEdit} />
+                        <Button edit={this.handleEdit} logout={this.handlelogout}/>
                     </Sidenav>
                     {!this.state.edit ?
                         <Dashboard /> : <NewProjectForm />
