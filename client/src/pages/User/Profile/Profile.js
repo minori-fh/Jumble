@@ -84,7 +84,7 @@ class Profile extends Component {
                         <ProjectButton edit={this.handleEdit} />
                     </Sidenav>
                     {!this.state.edit ?
-                        <Dashboard /> : <NewProjectForm />
+                        <Dashboard /> : <NewProjectForm edit={this.handleEdit}/>
                     }
                 </Col>
             </Row>
