@@ -6,8 +6,6 @@ function Navbar() {
     return(
     <div>
         <nav className="topnavBar">
-            <button>Project 2</button>
-            <button>Project 3</button>
         </nav>
     </div>
     )

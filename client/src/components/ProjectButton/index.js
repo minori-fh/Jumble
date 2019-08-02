@@ -1,17 +1,10 @@
 import React from 'react';
-import "./sidenavButton.css";
 
-function ProjectButton (props)  {
+function ProjectButton(props) {
 
-        return (
-            <div id="centerButtons">
-                <button className="sideBtn ">Project 1</button>
-                <button className="sideBtn">Project 2</button>
-                <button className="sideBtn">Project 3</button>
-                <button className="sideBtn active" onClick={() => props.edit()} >+ Project</button>
-                {/* <button className='logout' onClick={() => props.logout()}>Logout</button> */}
-            </div>
-        );
+    return (
+        <button id={props.id} className="sideBtn active" >{props.name}</button>
+    );
 
-    }
+}
 export default ProjectButton
