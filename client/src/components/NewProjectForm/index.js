@@ -1,52 +1,52 @@
 import React, { Component } from 'react';
-import "./style.css"
+import "./style.css";
+import API from "../../utils/API-project";
 
 class NewProjectForm extends Component {
-    
+
     state = {
-        title:"",
-        budget:""
+        title: ""
     }
-    
-    
-    handelInputChange = event =>{
 
-        const {name,value } = event.target
-        const {budget,values} = event.target
+    handleInputChange = event => {
+
+        const { name, value } = event.target
         this.setState({
-            [name]:value,
-            [budget]:values
-        })
-
+            [name]: value
+        });
     }
 
-    
-    render(){
-    return (
-        <div>
-            <form id="styling">
-            <p id="typedTitle">{this.state.title}</p>
-            <p id="typedBudget">{this.state.budget}</p>
-                <input
-                id="inputName"
-                type ="text"
-                value={this.state.title}
-                placeholder="Project Name"
-                onChange={this.handelInputChange}
-                name="title"
-                /> 
-                <input
-                id="inputBudget"
-                type ="text"
-                placeholder="Project Budget"
-                onChange={this.handelInputChange}
-                value={this.state.budget}
-                name="budget"
-                />
-                <button id="submitNewProject"> Submit </button>
-            </form>
-        </div>
-    )
+    saveProject = () => {
+
+        const body = {
+            name: this.state.title
+        }
+
+        API.createProject(body)
+            .then(res => {
+                console.log("LOOK HERE=======================================" + res)
+        })
+        .catch(err => console.log(err.message));
+    }
+
+
+    render() {
+        return (
+            <div>
+                <form id="styling">
+                    <p id="typedTitle">{this.state.title}</p>
+                    <input
+                        id="inputName"
+                        type="text"
+                        value={this.state.title}
+                        placeholder="Project Name"
+                        onChange={this.handleInputChange}
+                        name="title"
+                    />
+                    <button id="submitNewProject" onClick={this.saveProject}> Submit </button>
+                </form>
+            </div>
+        )
     }
 }
 
