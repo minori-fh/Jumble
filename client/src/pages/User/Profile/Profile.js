@@ -1,29 +1,31 @@
 
 import React, { Component } from 'react';
 import Actions from "../../../utils/API";
-import "./Profile.css";
-// import { BrowserRouter as Router, Route, Redirect, Switch } from "react-router-dom";
-// import Panel from '../../../components/Panel';
-// import Button from '../../../components/Button';
 import Dashboard from '../../../components/Dashboard';
 import { Col, Row } from "../../../components/Grid"
 import Navbar from "../../../components/Navbar"
 import Sidenav from "../../../components/Sidenav"
+import CreateProject from '../../../components/CreateProject';
 import ProjectButton from '../../../components/ProjectButton';
-import NewProjectForm from '../../../components/NewProjectForm'
-
-//need to import components here
-
+import NewProjectForm from '../../../components/NewProjectForm';
+import ProjectAPI from '../../../utils/API-project';
+import "./Profile.css";
 
 class Profile extends Component {
     constructor(props) {
         super(props)
         this.state = {
             userAccount: false,
-            edit: false
+            edit: false,
+            projects: []
         }
     }
 
+    componentWillMount() {
+        ProjectAPI.findProjects().then((res) => {
+            this.setState({ projects: res.data })
+        });
+    }
 
     handlelogout() {
         Actions.handlelogout()
@@ -76,19 +78,29 @@ class Profile extends Component {
             // <Panel>
             //     {this.renderAccountContent()}
             // </Panel>
-
-            <Row>
-                <Col className="l3">
+            <div>
+                <Row>
                     <Navbar />
-                    <Sidenav>
-                        <ProjectButton edit={this.handleEdit} />
-                    </Sidenav>
-                    {!this.state.edit ?
-                        <Dashboard /> : <NewProjectForm edit={this.handleEdit}/>
-                    }
-                </Col>
-            </Row>
-
+                </Row>
+                <Row>
+                    <Col className="xl2 l3">
+                        <Sidenav>
+                            <div className="centerButtons">
+                                {this.state.projects.map(project => (
+                                    <ProjectButton id={project.id} name={project.name} key={project.id} />
+                                ))}
+                                <CreateProject edit={this.handleEdit} />
+                            </div>
+                        </Sidenav>
+                    </Col>
+                    <Col className="xl10 l9">
+                        {
+                            !this.state.edit ?
+                                <Dashboard /> : <NewProjectForm edit={this.handleEdit} />
+                        }
+                    </Col>
+                </Row >
+            </div>
         )
     }
 }

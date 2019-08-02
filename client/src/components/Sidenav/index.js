@@ -4,12 +4,12 @@ import "./style.css"
 // import Button from "../../components/ProjectButtons"
 
 function Sidenav(props) {
-    return(
-    <div >
-        <nav className="navBar">
-           {props.children}
-        </nav>
-    </div>
+    return (
+        <div>
+            <nav className="navBar">
+                {props.children}
+            </nav>
+        </div>
     )
 }
 
