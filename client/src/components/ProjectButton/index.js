@@ -1,10 +1,7 @@
 import React from 'react';
-import "./sidenavButton.css"
-// import NewProjectForm from '../NewProjectForm';
+import "./sidenavButton.css";
 
-function Button (props)  {
-
-    console.log(props.edit)
+function ProjectButton (props)  {
 
         return (
             <div id="centerButtons">
@@ -17,4 +14,4 @@ function Button (props)  {
         );
 
     }
-export default Button
+export default ProjectButton
