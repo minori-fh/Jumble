@@ -23,15 +23,14 @@ class NewProjectForm extends Component {
         });
     }
 
-    saveProject = () => {
-
-        this.setState({
-            savedTitle: true
-        });
-
+    saveProject = event => {
+        event.preventDefault();
         const body = {
             name: this.state.title
         }
+        this.setState({
+            savedTitle: true
+        });
 
         API.createProject(body)
             .then(res => {
