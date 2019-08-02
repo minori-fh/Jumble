@@ -9,8 +9,9 @@ import Dashboard from '../../../components/Dashboard';
 import { Col, Row } from "../../../components/Grid"
 import Navbar from "../../../components/Navbar"
 import Sidenav from "../../../components/Sidenav"
-import Button from '../../../components/ProjectButtons';
+import ProjectButton from '../../../components/ProjectButton';
 import NewProjectForm from '../../../components/NewProjectForm'
+import LogoutButton from '../../../components/LogoutButton'
 
 //need to import components here
 
@@ -59,7 +60,6 @@ class Profile extends Component {
     // }
 
     handleEdit = () => {
-        console.log("hi")
         if (this.state.edit === false) {
             this.setState({
                 edit: true
@@ -82,7 +82,8 @@ class Profile extends Component {
                 <Col className="l3">
                     <Navbar />
                     <Sidenav>
-                        <Button edit={this.handleEdit} />
+                        <ProjectButton edit={this.handleEdit}/>
+                        <LogoutButton logout={this.handlelogout.bind(this)}/>
                     </Sidenav>
                     {!this.state.edit ?
                         <Dashboard /> : <NewProjectForm />
