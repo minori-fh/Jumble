@@ -86,7 +86,7 @@ class Profile extends Component {
                         <LogoutButton logout={this.handlelogout.bind(this)}/>
                     </Sidenav>
                     {!this.state.edit ?
-                        <Dashboard /> : <NewProjectForm />
+                        <Dashboard /> : <NewProjectForm edit={this.handleEdit}/>
                     }
                 </Col>
             </Row>

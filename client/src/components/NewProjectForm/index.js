@@ -16,8 +16,8 @@ class NewProjectForm extends Component {
         });
     }
 
-    saveProject = () => {
-
+    saveProject = event => {
+        event.preventDefault();
         const body = {
             name: this.state.title
         }
@@ -43,7 +43,8 @@ class NewProjectForm extends Component {
                         onChange={this.handleInputChange}
                         name="title"
                     />
-                    <button id="submitNewProject" onClick={this.saveProject}> Submit </button>
+                    <button id="submitNewProject" type="submit" onClick={this.saveProject}> Submit </button>
+                    <button onClick={this.props.edit}> Close </button>
                 </form>
             </div>
         )
