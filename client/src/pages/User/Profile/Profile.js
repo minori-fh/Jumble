@@ -9,6 +9,7 @@ import CreateProject from '../../../components/CreateProject';
 import ProjectButton from '../../../components/ProjectButton';
 import NewProjectForm from '../../../components/NewProjectForm';
 import ProjectAPI from '../../../utils/API-project';
+import LogoutButton from '../../../components/LogoutButton'
 import "./Profile.css";
 
 class Profile extends Component {
@@ -90,6 +91,7 @@ class Profile extends Component {
                                     <ProjectButton id={project.id} name={project.name} key={project.id} />
                                 ))}
                                 <CreateProject edit={this.handleEdit} />
+                                <LogoutButton logout={this.handlelogout.bind(this)}/>
                             </div>
                         </Sidenav>
                     </Col>
