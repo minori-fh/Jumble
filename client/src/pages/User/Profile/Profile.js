@@ -11,6 +11,7 @@ import Navbar from "../../../components/Navbar"
 import Sidenav from "../../../components/Sidenav"
 import ProjectButton from '../../../components/ProjectButton';
 import NewProjectForm from '../../../components/NewProjectForm'
+import LogoutButton from '../../../components/LogoutButton'
 
 //need to import components here
 
@@ -81,7 +82,8 @@ class Profile extends Component {
                 <Col className="l3">
                     <Navbar />
                     <Sidenav>
-                        <ProjectButton edit={this.handleEdit} />
+                        <ProjectButton edit={this.handleEdit}/>
+                        <LogoutButton logout={this.handlelogout.bind(this)}/>
                     </Sidenav>
                     {!this.state.edit ?
                         <Dashboard /> : <NewProjectForm />

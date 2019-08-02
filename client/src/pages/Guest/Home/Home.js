@@ -5,7 +5,7 @@ import "./Home.css"
 
 import Panel from '../../../components/Panel'
 import Input from '../../../components/Input'
-import Button from '../../../components/LoginButton'
+import LoginButton from '../../../components/LoginButton'
 import { Row, Col } from "../../../components/Grid";
 
 import logo from '../../../../src/jumble.gif';
@@ -137,16 +137,16 @@ class Home extends Component {
                             size="6" 
                             name="local_pw" 
                             handleChange={this.handleInputChange}/>
-                        <Button 
+                        <LoginButton 
                             handleBtnClick={this.handleSubmitAuth} 
                             >
                                 login
-                        </Button>
-                        <Button 
+                        </LoginButton>
+                        <LoginButton 
                             handleBtnClick={this.handleSubmitAuth} 
                             >
                                 signup
-                        </Button>
+                        </LoginButton>
                     </form>
                 </Col>
             </Row>
