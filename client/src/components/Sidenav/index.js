@@ -1,16 +1,16 @@
 import React from "react"
 import "./style.css"
 // import { Col, Row } from "../Grid"
-import Button from "../../components/ProjectButtons"
+// import Button from "../../components/ProjectButtons"
 
-function Sidenav() {
+function Sidenav(props) {
     return(
     <div >
         <nav className="navBar">
-           <Button/>
+           {props.children}
         </nav>
     </div>
     )
 }
 
-export default Sidenav
+export default Sidenav;
