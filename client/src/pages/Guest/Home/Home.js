@@ -5,7 +5,7 @@ import "./Home.css"
 
 import Panel from '../../../components/Panel'
 import Input from '../../../components/Input'
-import Button from '../../../components/Button'
+import Button from '../../../components/LoginButton'
 import { Row, Col } from "../../../components/Grid";
 
 import logo from '../../../../src/jumble.gif';

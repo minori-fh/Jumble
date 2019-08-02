@@ -1,11 +1,18 @@
 #centerButtons{
  width : 120px;
+ position: static;
 
 }
 .sideBtn{
+    height:30px;
     width: 100px;
     border-radius: 8px;
-    background: linear-gradient(navy, white);
+    background: (white);
     color:black;
-    font-size: 14px
+    font-size: 16px;
+    position: relative;
+    top:10%;
+    margin-bottom:5px;
+    margin-top:5px;
 }
+

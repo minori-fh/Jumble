@@ -1,7 +1,7 @@
 import React from "react"
 import "./style.css"
 // import { Col, Row } from "../Grid"
-import Button from "../../components/ProjectButtons"
+// import Button from "../../components/ProjectButtons"
 
 function Sidenav(props) {
     return(

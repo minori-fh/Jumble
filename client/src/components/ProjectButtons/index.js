@@ -11,7 +11,7 @@ function Button (props)  {
                 <button className="sideBtn">Project 1</button>
                 <button className="sideBtn">Project 2</button>
                 <button className="sideBtn">Project 3</button>
-                <button className="sideBtn" onClick={() => props.edit()} >+Project</button>
+                <button className="sideBtn" onClick={() => props.edit()} >+ Project</button>
             </div>
         );
 
