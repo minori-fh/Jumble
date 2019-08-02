@@ -7,12 +7,15 @@
     height:30px;
     width: 100px;
     border-radius: 8px;
-    background: (white);
-    color:black;
+    background-color:white;
+    color:rgb(5, 5, 41);
     font-size: 16px;
     position: relative;
     top:10%;
     margin-bottom:5px;
     margin-top:5px;
+}
+#active{
+color:green
 }
 
