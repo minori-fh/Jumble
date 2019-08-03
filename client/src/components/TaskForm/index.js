@@ -12,7 +12,7 @@ class TaskForm extends Component {
         return (
             <div>
                 <p>{this.state.task}</p>
-                <input
+                <input required
                     type="text"
                     value={this.state.task}
                     placeholder="Task"
@@ -20,7 +20,7 @@ class TaskForm extends Component {
                     name="task"
                 />
                 <p>{this.state.assignee}</p>
-                <input
+                <input required
                     type="text"
                     value={this.state.assignee}
                     placeholder="Assignee"

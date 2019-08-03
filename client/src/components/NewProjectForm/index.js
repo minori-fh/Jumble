@@ -34,7 +34,6 @@ class NewProjectForm extends Component {
 
         API.createProject(body)
             .then(res => {
-                console.log("LOOK HERE=======================================" + res)
             })
             .catch(err => console.log(err.message));
     }
@@ -43,10 +42,17 @@ class NewProjectForm extends Component {
         event.preventDefault();
         const newTask = this.state.tasks;
         newTask.push({name: "", assignees: [""]});
-        console.log(newTask);
         this.setState({
             tasks: newTask
         });
+    }
+
+    saveBudgetTask = event => {
+        event.preventDefault();
+        const form = {
+            budget:this.state,budget
+        }
+        console.log(this.state.budget);
     }
 
     formRender() {
@@ -55,7 +61,7 @@ class NewProjectForm extends Component {
                 <div>
                     <form id="styling">
                         <p id="typedTitle">{this.state.title}</p>
-                        <input
+                        <input required
                             id="inputName"
                             type="text"
                             value={this.state.title}
@@ -73,7 +79,7 @@ class NewProjectForm extends Component {
                 <div>
                     <form id="styling">
                         <p id="typedBudget">{this.state.budget}</p>
-                        <input
+                        <input required
                             id="inputBudget"
                             type="text"
                             value={this.state.budget}
@@ -85,6 +91,7 @@ class NewProjectForm extends Component {
                             return (<TaskForm key={i}/>);
                         })}
                         <button id="addTask" onClick={this.addTask}>+Task</button>
+                        <button id="submit" onClick={this.saveBudgetTask}>Submit</button>
                     </form>
                 </div>
             )
@@ -97,20 +104,6 @@ class NewProjectForm extends Component {
             <div>
                 {this.formRender()}
             </div>
-            // <div>
-            //     <form id="styling">
-            //         <p id="typedTitle">{this.state.title}</p>
-            //         <input
-            //             id="inputName"
-            //             type="text"
-            //             value={this.state.title}
-            //             placeholder="Project Name"
-            //             onChange={this.handleInputChange}
-            //             name="title"
-            //         />
-            //         <button id="submitNewProject" onClick={this.saveProject}> Submit </button>
-            //     </form>
-            // </div>
         )
     }
 }
