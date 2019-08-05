@@ -42,52 +42,34 @@ class Profile extends Component {
                     isLoggedIn: response
                 })
 
-
                 if (!response) {
                     window.location.href = "/"
                 }
-
             })
             .catch(err => console.log("err", err))
     }
 
-    loadProject = id => {
-        BudgetAPI.getBudget(id).then(res =>
-            console.log(res.data),
-            this.setState({
-                budget: res.data
-            })
-        );
-        console.log("========================");
-        TaskAPI.getTasks(id).then(res =>
-            console.log(res.data),
-            this.setState({
-                budget: res.data
-            })
-        );
-        console.log("========================");
-        AssigneeAPI.getAssignees(id).then(res =>
-            console.log(res.data),
-            this.setState({
-                budget: res.data
-            })
-        );
-    }
-
-    // renderAccountContent() {
-    //     return (
-    //         <Router>
-    //             <div>
-    //                 {/* <Sidenav /> */}
-    //                 <Switch>
-    //                     {/* we need to change :uuid and :projectid with pulled info at state */}
-    //                     {/* <Route exact path="/dashboard/:uuid/:projectid" component={Dashboard}/> */}
-    //                     {/* <Route exact path ="/dashboard/:uuid/:projectid/form" component={Form}  /> */}
-    //                 </Switch>
-    //                 <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
-    //             </div>
-    //         </Router>
-    //     )
+    // loadProject = id => {
+    //     BudgetAPI.getBudget(id).then(res =>
+    //         console.log(res.data),
+    //         this.setState({
+    //             budget: res.data
+    //         })
+    //     );
+    //     console.log("========================");
+    //     TaskAPI.getTasks(id).then(res =>
+    //         console.log(res.data),
+    //         this.setState({
+    //             budget: res.data
+    //         })
+    //     );
+    //     console.log("========================");
+    //     AssigneeAPI.getAssignees(id).then(res =>
+    //         console.log(res.data),
+    //         this.setState({
+    //             budget: res.data
+    //         })
+    //     );
     // }
 
     handleEdit = () => {
@@ -125,9 +107,9 @@ class Profile extends Component {
                         {
                             !this.state.edit ?
                                 <Dashboard>
-                                    <Tasks tasks={this.state.tasks} />
+                                    {/* <Tasks tasks={this.state.tasks} />
                                     <Assignees assignees={this.state.assignees} />
-                                    <Budget budget={this.state.budget} />
+                                    <Budget budget={this.state.budget} /> */}
                                 </Dashboard> : <NewProjectForm edit={this.handleEdit} />
                         }
                     </Col>
