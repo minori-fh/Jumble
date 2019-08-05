@@ -12,9 +12,10 @@ module.exports = {
     },
     create: function (req, res) {
         db.Assignee.create({
-            name: req.body.name
+            name: req.body.name,
+            ProjectId: req.body.ProjectId
         }).then(function (newAssignee) {
-            // console.log(newAssignee)
+            console.log(newAssignee)
         })
     },
     update: function (req, res) {

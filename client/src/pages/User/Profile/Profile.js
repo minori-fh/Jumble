@@ -12,7 +12,10 @@ import ProjectAPI from '../../../utils/API-project';
 import BudgetAPI from '../../../utils/API-budget';
 import TaskAPI from '../../../utils/API-task';
 import AssigneeAPI from '../../../utils/API-assignee';
-import LogoutButton from '../../../components/LogoutButton'
+import LogoutButton from '../../../components/LogoutButton';
+import Tasks from "../../../components/Tasks";
+import Budget from "../../../components/Budget";
+import Assignees from "../../../components/Assignees";
 import "./Profile.css";
 
 class Profile extends Component {
@@ -51,28 +54,28 @@ class Profile extends Component {
             .catch(err => console.log("err", err))
     }
 
-    loadProject = id => {
-        BudgetAPI.getBudget(id).then(res =>
-            console.log(res.data),
-            this.setState({
-                budget: res.data
-            })
-        );
-        console.log("========================");
-        TaskAPI.getTasks(id).then(res =>
-            console.log(res.data),
-            this.setState({
-                budget: res.data
-            })
-        );
-        console.log("========================");
-        AssigneeAPI.getAssignees(id).then(res =>
-            console.log(res.data),
-            this.setState({
-                budget: res.data
-            })
-        );
-    }
+    // loadProject = id => {
+    //     BudgetAPI.getBudget(id).then(res => {
+    //         console.log(res.data)
+    //         this.setState({
+    //             budget: res.data
+    //         })
+    //     });
+    //     console.log("========================");
+    //     TaskAPI.getTasks(id).then(res => {
+    //         console.log(res.data)
+    //         this.setState({
+    //             budget: res.data
+    //         })
+    //     });
+    //     console.log("========================");
+    //     AssigneeAPI.getAssignees(id).then(res => {
+    //         console.log(res.data)
+    //         this.setState({
+    //             budget: res.data
+    //         })
+    //     });
+    // }
 
     // renderAccountContent() {
     //     return (
@@ -114,7 +117,7 @@ class Profile extends Component {
                         <Sidenav>
                             <div className="centerButtons">
                                 {this.state.projects.map(project => (
-                                    <ProjectButton onClick={this.loadProject(project.id)} id={project.id} name={project.name} key={project.id} />
+                                    <ProjectButton id={project.id} name={project.name} key={project.id} />
                                 ))}
                                 <CreateProject edit={this.handleEdit} />
                                 <LogoutButton logout={this.handlelogout.bind(this)} />
@@ -125,9 +128,9 @@ class Profile extends Component {
                         {
                             !this.state.edit ?
                                 <Dashboard>
-                                    <Tasks tasks={this.state.tasks} />
+                                    {/* <Tasks tasks={this.state.tasks} />
                                     <Assignees assignees={this.state.assignees} />
-                                    <Budget budget={this.state.budget} />
+                                    <Budget budget={this.state.budget} /> */}
                                 </Dashboard> : <NewProjectForm edit={this.handleEdit} />
                         }
                     </Col>
