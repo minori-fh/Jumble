@@ -4,7 +4,7 @@ export default {
   createAssignee: function(body) {
     return axios.post("/api/assignee", body);
   },
-  getAssignee: function(id) {
+  getAssignees: function(id) {
     return axios.get("/api/assignee/" + id);
   },
   updateAssignee: function(id, body) {

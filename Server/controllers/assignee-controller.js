@@ -4,7 +4,7 @@ module.exports = {
     findAll: function (req, res) {
         db.Assignee.findAll({
             where: {
-                TaskId: req.params.id
+                ProjectId: req.params.id
             }
         }).then(function (dbAssignee) {
             res.json(dbAssignee);
@@ -31,8 +31,8 @@ module.exports = {
             where: {
                 id: req.params.id
             }
-        }).then(function (dbProject) {
-            res.json(dbProject);
+        }).then(function (dbAssignee) {
+            res.json(dbAssignee);
         });
     }
 };

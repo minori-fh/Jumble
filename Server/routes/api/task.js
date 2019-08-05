@@ -8,7 +8,7 @@ router.route("/")
   .post(task.create);
 
 router.route("/:id")
-    .get(task.findOne)
+    .get(task.findAll)
     .put(task.update)
     .delete(task.remove);
 	

@@ -9,6 +9,9 @@ import CreateProject from '../../../components/CreateProject';
 import ProjectButton from '../../../components/ProjectButton';
 import NewProjectForm from '../../../components/NewProjectForm';
 import ProjectAPI from '../../../utils/API-project';
+import BudgetAPI from '../../../utils/API-budget';
+import TaskAPI from '../../../utils/API-task';
+import AssigneeAPI from '../../../utils/API-assignee';
 import LogoutButton from '../../../components/LogoutButton'
 import "./Profile.css";
 
@@ -18,6 +21,9 @@ class Profile extends Component {
         this.state = {
             userAccount: false,
             edit: false,
+            budget: {},
+            tasks: {},
+            assignees: {},
             projects: []
         }
     }
@@ -43,6 +49,29 @@ class Profile extends Component {
 
             })
             .catch(err => console.log("err", err))
+    }
+
+    loadProject = id => {
+        BudgetAPI.getBudget(id).then(res =>
+            console.log(res.data),
+            this.setState({
+                budget: res.data
+            })
+        );
+        console.log("========================");
+        TaskAPI.getTasks(id).then(res =>
+            console.log(res.data),
+            this.setState({
+                budget: res.data
+            })
+        );
+        console.log("========================");
+        AssigneeAPI.getAssignees(id).then(res =>
+            console.log(res.data),
+            this.setState({
+                budget: res.data
+            })
+        );
     }
 
     // renderAccountContent() {
@@ -76,9 +105,6 @@ class Profile extends Component {
 
     render() {
         return (
-            // <Panel>
-            //     {this.renderAccountContent()}
-            // </Panel>
             <div>
                 <Row>
                     <Navbar />
@@ -88,17 +114,21 @@ class Profile extends Component {
                         <Sidenav>
                             <div className="centerButtons">
                                 {this.state.projects.map(project => (
-                                    <ProjectButton id={project.id} name={project.name} key={project.id} />
+                                    <ProjectButton onClick={this.loadProject(project.id)} id={project.id} name={project.name} key={project.id} />
                                 ))}
                                 <CreateProject edit={this.handleEdit} />
-                                <LogoutButton logout={this.handlelogout.bind(this)}/>
+                                <LogoutButton logout={this.handlelogout.bind(this)} />
                             </div>
                         </Sidenav>
                     </Col>
                     <Col className="xl10 l9">
                         {
                             !this.state.edit ?
-                                <Dashboard /> : <NewProjectForm edit={this.handleEdit} />
+                                <Dashboard>
+                                    <Tasks tasks={this.state.tasks} />
+                                    <Assignees assignees={this.state.assignees} />
+                                    <Budget budget={this.state.budget} />
+                                </Dashboard> : <NewProjectForm edit={this.handleEdit} />
                         }
                     </Col>
                 </Row >
