@@ -26,5 +26,14 @@ module.exports = {
         }).then(function (dbBudget) {
             res.json(dbBudget);
         });
-    }
+    },
+    remove: function (req, res) {
+        db.Task.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbBudget) {
+            res.json(dbBudget);
+        });
+    },
 };

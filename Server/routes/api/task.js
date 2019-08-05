@@ -9,6 +9,7 @@ router.route("/")
 
 router.route("/:id")
     .get(task.findOne)
-    .put(task.update);
+    .put(task.update)
+    .delete(task.remove);
 	
 module.exports = router;
