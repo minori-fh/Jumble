@@ -8,7 +8,8 @@ router.route("/")
   .post(task.create);
 
 router.route("/:id")
-    .get(task.findOne)
-    .put(task.update);
+    .get(task.findAll)
+    .put(task.update)
+    .delete(task.remove);
 	
 module.exports = router;

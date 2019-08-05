@@ -9,6 +9,22 @@ module.exports = (sequelize, DataTypes) => {
         deadline: {
             type: DataTypes.DATE,
             allowNull: true
+        },
+        assignee1: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        assignee2: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        assignee3: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        assignee4: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
     });
 
