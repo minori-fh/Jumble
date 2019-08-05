@@ -12,6 +12,8 @@ import ProjectAPI from '../../../utils/API-project';
 import LogoutButton from '../../../components/LogoutButton'
 import "./Profile.css";
 
+import Chart1 from '../../../components/chart1'
+
 class Profile extends Component {
     constructor(props) {
         super(props)
@@ -98,7 +100,10 @@ class Profile extends Component {
                     <Col className="xl10 l9">
                         {
                             !this.state.edit ?
-                                <Dashboard /> : <NewProjectForm edit={this.handleEdit} />
+                                <Dashboard>
+                                    <Chart1/>
+                                </Dashboard> 
+                                : <NewProjectForm edit={this.handleEdit} />
                         }
                     </Col>
                 </Row >

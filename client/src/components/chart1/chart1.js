@@ -1,10 +1,35 @@
 import React from 'react';
+var Chart = require("chart.js")
 
-function chart1(){
+var ctx = document.getElementById("chart1")
+
+var data = {
+    datasets: [{
+        data: [10, 20, 30]
+    }],
+
+    // These labels appear in the legend and in the tooltips when hovering different arcs
+    labels: [
+        'Red',
+        'Yellow',
+        'Blue'
+    ]
+};
+
+var Chart1 = new Chart(ctx, {
+    type: 'doughnut',
+    data: data,
+    options: options
+});
+
+function Chart1(){
+
     return(
-        <div className = 'chart' id='chart1'>
+        <div>
+            <canvas className = 'chart' id='chart1'>
+            </canvas>
         </div>
     )
 }
 
-export default chart1
+export default Chart1
