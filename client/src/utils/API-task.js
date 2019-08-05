@@ -4,7 +4,7 @@ export default {
   createTask: function(body) {
     return axios.post("/api/task", body);
   },
-  getTask: function(id) {
+  getTasks: function(id) {
     return axios.get("/api/task/" + id);
   },
   updateTask: function(id, body) {

@@ -1,13 +1,13 @@
 var db = require("../models");
 
 module.exports = {
-    findOne: function (req, res) {
-        db.Task.findOne({
+    findAll: function (req, res) {
+        db.Task.findAll({
             where: {
                 ProjectId: req.params.id
             }
-        }).then(function (dbBudget) {
-            res.json(dbBudget);
+        }).then(function (dbTask) {
+            res.json(dbTask);
         });
     },
     create: function (req, res) {
@@ -25,8 +25,17 @@ module.exports = {
             where: {
                 id: req.params.id
             }
-        }).then(function (dbBudget) {
-            res.json(dbBudget);
+        }).then(function (dbTask) {
+            res.json(dbTask);
         });
-    }
+    },
+    remove: function (req, res) {
+        db.Task.destroy({
+            where: {
+                id: req.params.id
+            }
+        }).then(function (dbTask) {
+            res.json(dbTask);
+        });
+    },
 };
