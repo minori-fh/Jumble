@@ -27,8 +27,7 @@ module.exports = {
             name: req.body.name,
             UserUuid: userID
         }).then(function (newProject) {
-            console.log("this is new project",newProject.dataValues.id)
-            res.json(newProject)//.dataValues.id
+            res.json(newProject)
         })
     },
     remove: function (req, res) {

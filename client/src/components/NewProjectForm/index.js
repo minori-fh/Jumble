@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./style.css";
 import API from "../../utils/API-project";
+import APIBudget from "../../utils/API-budget"
 import TaskForm from "../TaskForm"
 
 class NewProjectForm extends Component {
@@ -9,6 +10,7 @@ class NewProjectForm extends Component {
         title: "",
         savedTitle: false,
         budget: "",
+        projectID: 0,
         tasks:[{
             name: "",
             assignees: []
@@ -34,6 +36,11 @@ class NewProjectForm extends Component {
 
         API.createProject(body)
             .then(res => {
+                console.log(res.data.id)
+                this.setState({
+                    projectID: res.data.id
+                });
+                console.log("--------------"+this.state.projectID)
             })
             .catch(err => console.log(err.message));
     }
@@ -49,10 +56,14 @@ class NewProjectForm extends Component {
 
     saveBudgetTask = event => {
         event.preventDefault();
-        const form = {
-            budget:this.state,budget
+        const body = {
+            total: this.state.budget,
+            ProjectId: this.state.projectID
         }
-        console.log(this.state.budget);
+        APIBudget.createBudget(body)
+        .then(res => {
+            console.log("lets hope this works!!!!!!!!",res);
+        })
     }
 
     formRender() {

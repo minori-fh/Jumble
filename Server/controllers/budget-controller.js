@@ -20,7 +20,7 @@ module.exports = {
             Sales: req.body.Sales,
             Finance: req.body.Finance,
             Security: req.body.Security,
-            ProjectId: req.body.id
+            ProjectId: req.body.ProjectId
         }).then(function (newBudget) {
             console.log(newBudget)
         })
