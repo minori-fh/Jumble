@@ -22,12 +22,12 @@ module.exports = {
     },
     create: function (req, res) {
         var userID = req.session.passport.user;
-        console.log(req.body)
+        // console.log(req.body)
         db.Project.create({
             name: req.body.name,
             UserUuid: userID
         }).then(function (newProject) {
-            console.log(newProject)
+            res.json(newProject)
         })
     },
     remove: function (req, res) {

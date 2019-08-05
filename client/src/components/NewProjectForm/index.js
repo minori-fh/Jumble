@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import "./style.css";
 import API from "../../utils/API-project";
+import APIBudget from "../../utils/API-budget"
 import TaskForm from "../TaskForm"
 
 class NewProjectForm extends Component {
@@ -9,6 +10,7 @@ class NewProjectForm extends Component {
         title: "",
         savedTitle: false,
         budget: "",
+        projectID: 0,
         tasks:[{
             name: "",
             assignees: []
@@ -34,7 +36,11 @@ class NewProjectForm extends Component {
 
         API.createProject(body)
             .then(res => {
-                console.log("LOOK HERE=======================================" + res)
+                console.log(res.data.id)
+                this.setState({
+                    projectID: res.data.id
+                });
+                console.log("--------------"+this.state.projectID)
             })
             .catch(err => console.log(err.message));
     }
@@ -43,10 +49,21 @@ class NewProjectForm extends Component {
         event.preventDefault();
         const newTask = this.state.tasks;
         newTask.push({name: "", assignees: [""]});
-        console.log(newTask);
         this.setState({
             tasks: newTask
         });
+    }
+
+    saveBudgetTask = event => {
+        event.preventDefault();
+        const body = {
+            total: this.state.budget,
+            ProjectId: this.state.projectID
+        }
+        APIBudget.createBudget(body)
+        .then(res => {
+            console.log("lets hope this works!!!!!!!!",res);
+        })
     }
 
     formRender() {
@@ -55,7 +72,7 @@ class NewProjectForm extends Component {
                 <div>
                     <form id="styling">
                         <p id="typedTitle">{this.state.title}</p>
-                        <input
+                        <input required
                             id="inputName"
                             type="text"
                             value={this.state.title}
@@ -73,7 +90,7 @@ class NewProjectForm extends Component {
                 <div>
                     <form id="styling">
                         <p id="typedBudget">{this.state.budget}</p>
-                        <input
+                        <input required
                             id="inputBudget"
                             type="text"
                             value={this.state.budget}
@@ -85,6 +102,7 @@ class NewProjectForm extends Component {
                             return (<TaskForm key={i}/>);
                         })}
                         <button id="addTask" onClick={this.addTask}>+Task</button>
+                        <button id="submit" onClick={this.saveBudgetTask}>Submit</button>
                     </form>
                 </div>
             )
@@ -97,20 +115,6 @@ class NewProjectForm extends Component {
             <div>
                 {this.formRender()}
             </div>
-            // <div>
-            //     <form id="styling">
-            //         <p id="typedTitle">{this.state.title}</p>
-            //         <input
-            //             id="inputName"
-            //             type="text"
-            //             value={this.state.title}
-            //             placeholder="Project Name"
-            //             onChange={this.handleInputChange}
-            //             name="title"
-            //         />
-            //         <button id="submitNewProject" onClick={this.saveProject}> Submit </button>
-            //     </form>
-            // </div>
         )
     }
 }
