@@ -13,10 +13,8 @@ class NewProjectForm extends Component {
         savedTitle: false,
         budget: "",
         projectID: 0,
-        tasks: [{
-            name: "",
-            assignee: ""
-        }]
+        task: "",
+        assignee: ""
     }
 
     handleInputChange = event => {
@@ -66,28 +64,29 @@ class NewProjectForm extends Component {
             .then(res => {
                 console.log("lets hope this works!!!!!!!!", res);
             })
+            .catch(err => console.log(err.message));
 
-        for (let i = 0; i < this.state.tasks.length; i++) {
-            let info = {
-                task: this.state.tasks[i].name,
-                ProjectId: this.state.projectID
-            }
-
-            APITask.createTask(info)
-                .then(res => {
-                    console.log(res)
-                })
-
-            let person = {
-                name: this.state.tasks[i].assignee,
-                projectID: this.state.projectID
-            }
-
-            APIAssignee.createAssignee(person)
-                .then(res => {
-                    console.log(res)
-                })
+        let info = {
+            task: this.state.task,
+            ProjectId: this.state.projectID
         }
+
+        APITask.createTask(info)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err.message));
+
+        let person = {
+            name: this.state.assignee,
+            ProjectId: this.state.projectID
+        }
+
+        APIAssignee.createAssignee(person)
+            .then(res => {
+                console.log(res)
+            })
+            .catch(err => console.log(err.message));
     }
 
 
@@ -123,10 +122,20 @@ class NewProjectForm extends Component {
                             onChange={this.handleInputChange}
                             name="budget"
                         />
-                        {this.state.tasks.map((task, i) => {
-                            return (<TaskForm key={i} />);
-                        })}
-                        <button id="addTask" onClick={this.addTask}>+Task</button>
+                        <input required
+                            type="text"
+                            value={this.state.task}
+                            placeholder="Task"
+                            onChange={this.handleInputChange}
+                            name="task"
+                        />
+                        <input required
+                            type="text"
+                            value={this.state.assignee}
+                            placeholder="Assignee"
+                            onChange={this.handleInputChange}
+                            name="assignee"
+                        />
                         <button id="submit" onClick={this.saveBudgetTask}>Submit</button>
                     </form>
                 </div>
