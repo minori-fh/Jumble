@@ -12,7 +12,10 @@ import ProjectAPI from '../../../utils/API-project';
 import BudgetAPI from '../../../utils/API-budget';
 import TaskAPI from '../../../utils/API-task';
 import AssigneeAPI from '../../../utils/API-assignee';
-import LogoutButton from '../../../components/LogoutButton'
+import LogoutButton from '../../../components/LogoutButton';
+import Tasks from "../../../components/Tasks";
+import Budget from "../../../components/Budget";
+import Assignees from "../../../components/Assignees";
 import "./Profile.css";
 
 class Profile extends Component {
@@ -50,6 +53,7 @@ class Profile extends Component {
     }
 
     // loadProject = id => {
+<<<<<<< HEAD
     //     BudgetAPI.getBudget(id).then(res =>
     //         console.log(res.data),
     //         this.setState({
@@ -70,6 +74,44 @@ class Profile extends Component {
     //             budget: res.data
     //         })
     //     );
+=======
+    //     BudgetAPI.getBudget(id).then(res => {
+    //         console.log(res.data)
+    //         this.setState({
+    //             budget: res.data
+    //         })
+    //     });
+    //     console.log("========================");
+    //     TaskAPI.getTasks(id).then(res => {
+    //         console.log(res.data)
+    //         this.setState({
+    //             budget: res.data
+    //         })
+    //     });
+    //     console.log("========================");
+    //     AssigneeAPI.getAssignees(id).then(res => {
+    //         console.log(res.data)
+    //         this.setState({
+    //             budget: res.data
+    //         })
+    //     });
+    // }
+
+    // renderAccountContent() {
+    //     return (
+    //         <Router>
+    //             <div>
+    //                 {/* <Sidenav /> */}
+    //                 <Switch>
+    //                     {/* we need to change :uuid and :projectid with pulled info at state */}
+    //                     {/* <Route exact path="/dashboard/:uuid/:projectid" component={Dashboard}/> */}
+    //                     {/* <Route exact path ="/dashboard/:uuid/:projectid/form" component={Form}  /> */}
+    //                 </Switch>
+    //                 <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
+    //             </div>
+    //         </Router>
+    //     )
+>>>>>>> 8e7c1763a342882536270f61e8e906f6fb8b304b
     // }
 
     handleEdit = () => {
@@ -96,7 +138,7 @@ class Profile extends Component {
                         <Sidenav>
                             <div className="centerButtons">
                                 {this.state.projects.map(project => (
-                                    <ProjectButton onClick={this.loadProject(project.id)} id={project.id} name={project.name} key={project.id} />
+                                    <ProjectButton id={project.id} name={project.name} key={project.id} />
                                 ))}
                                 <CreateProject edit={this.handleEdit} />
                                 <LogoutButton logout={this.handlelogout.bind(this)} />

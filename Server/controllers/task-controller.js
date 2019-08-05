@@ -11,9 +11,11 @@ module.exports = {
         });
     },
     create: function (req, res) {
+        console.log("this is the req server side",req)
         db.Task.create({
             task: req.body.task,
-            deadline: req.body.deadline
+            deadline: req.body.deadline,
+            ProjectId: req.body.ProjectId
         }).then(function (newTask) {
             console.log(newTask)
         })
