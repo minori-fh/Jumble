@@ -14,7 +14,7 @@ module.exports = {
         db.Assignee.create({
             name: req.body.name
         }).then(function (newAssignee) {
-            console.log(newAssignee)
+            // console.log(newAssignee)
         })
     },
     update: function (req, res) {
