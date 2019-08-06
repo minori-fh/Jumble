@@ -131,7 +131,7 @@ class Profile extends Component {
                                     {/* <Tasks tasks={this.state.tasks} />
                                     <Assignees assignees={this.state.assignees} />
                                     <Budget budget={this.state.budget} /> */}
-                                </Dashboard> : <NewProjectForm edit={this.handleEdit} />
+                                </Dashboard> : <NewProjectForm edit={this.handleEdit}  />
                         }
                     </Col>
                 </Row >
