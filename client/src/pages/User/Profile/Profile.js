@@ -45,6 +45,8 @@ class Profile extends Component {
         });
     }
 
+  
+
     handlelogout() {
         Actions.handlelogout()
             .then(data => { return data.json() })
