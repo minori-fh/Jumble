@@ -1,6 +1,6 @@
 {
   "name": "Jumble",
-  "homepage": "https://minori-fh.github.io/Jumble/tree/githubPages",
+  "homepage": "https://minori-fh.github.io/Jumble",
   "version": "0.1.0",
   "private": true,
   "proxy": "https://jumbletron.herokuapp.com",
