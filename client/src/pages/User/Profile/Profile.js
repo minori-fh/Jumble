@@ -75,9 +75,9 @@ class Profile extends Component {
             })
         }
         else {
-            this.setState({
-                edit: false
-            })
+            ProjectAPI.findProjects().then((res) => {
+                this.setState({ projects: res.data, edit: false})
+            });
         }
     }
 
