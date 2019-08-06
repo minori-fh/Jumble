@@ -9,7 +9,7 @@ import CreateProject from '../../../components/CreateProject';
 import ProjectButton from '../../../components/ProjectButton';
 import NewProjectForm from '../../../components/NewProjectForm';
 import ProjectAPI from '../../../utils/API-project';
-import LogoutButton from '../../../components/LogoutButton'
+import LogoutButton from '../../../components/LogoutButton';
 import "./Profile.css";
 
 import Chart1 from '../../../components/chart1'
@@ -21,11 +21,22 @@ class Profile extends Component {
         this.state = {
             userAccount: false,
             edit: false,
+            selectedProject: -1,
+            budgetTotal: "",
+            budgetDesign: "",
+            budgetEngineering: "",
+            budgetFinance: "",
+            budgetHR: "",
+            budgetMarketing: "",
+            budgetSales: "",
+            budgetSecurity: "",
+            tasks: [],
+            assignees: [],
             projects: []
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         ProjectAPI.findProjects().then((res) => {
             this.setState({ projects: res.data })
         });
@@ -39,30 +50,21 @@ class Profile extends Component {
                     isLoggedIn: response
                 })
 
-
                 if (!response) {
                     window.location.href = "/"
                 }
-
             })
             .catch(err => console.log("err", err))
     }
 
-    // renderAccountContent() {
-    //     return (
-    //         <Router>
-    //             <div>
-    //                 {/* <Sidenav /> */}
-    //                 <Switch>
-    //                     {/* we need to change :uuid and :projectid with pulled info at state */}
-    //                     {/* <Route exact path="/dashboard/:uuid/:projectid" component={Dashboard}/> */}
-    //                     {/* <Route exact path ="/dashboard/:uuid/:projectid/form" component={Form}  /> */}
-    //                 </Switch>
-    //                 <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
-    //             </div>
-    //         </Router>
-    //     )
-    // }
+    loadProject = id => {
+
+        const found = this.state.projects.find((project) => project.id === id)
+
+        this.setState({
+            selectedProject: found.id
+        });
+    }
 
     handleEdit = () => {
         if (this.state.edit === false) {
@@ -79,9 +81,6 @@ class Profile extends Component {
 
     render() {
         return (
-            // <Panel>
-            //     {this.renderAccountContent()}
-            // </Panel>
             <div>
                 <Row>
                     <Navbar />
@@ -91,20 +90,20 @@ class Profile extends Component {
                         <Sidenav>
                             <div className="centerButtons">
                                 {this.state.projects.map(project => (
-                                    <ProjectButton id={project.id} name={project.name} key={project.id} />
+                                    <ProjectButton click={this.loadProject} id={project.id} name={project.name} key={project.id} />
                                 ))}
                                 <CreateProject edit={this.handleEdit} />
-                                <LogoutButton logout={this.handlelogout.bind(this)}/>
+                                <LogoutButton logout={this.handlelogout.bind(this)} />
                             </div>
                         </Sidenav>
                     </Col>
                     <Col className="xl10 l9">
                         {
                             !this.state.edit ?
-                                <Dashboard>
-                                    <Chart1/>
-                                    <Chart2/>
-                                </Dashboard> 
+                            <Dashboard projectID={this.state.selectedProject}>
+                                <Chart1/>
+                                <Chart2/>
+                            </Dashboard>
                                 : <NewProjectForm edit={this.handleEdit} />
                         }
                     </Col>

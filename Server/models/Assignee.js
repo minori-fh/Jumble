@@ -5,6 +5,22 @@ module.exports = (sequelize, DataTypes) => {
         name: {
             type: DataTypes.STRING,
             allowNull: false
+        },
+        task1: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        task2: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        task3: {
+            type: DataTypes.INTEGER,
+            allowNull: true
+        },
+        task4: {
+            type: DataTypes.INTEGER,
+            allowNull: true
         }
     }, {
         timestamps: false
@@ -12,7 +28,7 @@ module.exports = (sequelize, DataTypes) => {
 
     Assignee.associate = function (models) {
 
-        Assignee.belongsTo(models.Task, {
+        Assignee.belongsTo(models.Project, {
             foreignKey: {
                 allowNull: false
             }

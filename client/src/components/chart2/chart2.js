@@ -19,8 +19,7 @@ class Chart2 extends Component {
                     time: {
                       unit: 'week',
                       isoWeekday: false
-                    },
-                    ticks: "auto"
+                    }
                   }
                 ],
                 yAxes: [
