@@ -15,10 +15,12 @@ class Chart2 extends Component {
               scales: {
                 xAxes: [
                   {
-                    type: 'time',
+                    type: "time",
                     time: {
-                      unit: 'day'
-                    }
+                      unit: 'week',
+                      isoWeekday: false
+                    },
+                    ticks: "auto"
                   }
                 ],
                 yAxes: [
@@ -35,7 +37,7 @@ class Chart2 extends Component {
               labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
               datasets: [{
                 label: ["Progress (%)"],
-                data: [10, 25, 50, 46, 60],
+                data: [90, 80, 50, 46, 90],
                 fill: 'none',
                 backgroundColor: "#3E517A",
                 pointRadius: 2,
