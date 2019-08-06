@@ -9,14 +9,11 @@ import CreateProject from '../../../components/CreateProject';
 import ProjectButton from '../../../components/ProjectButton';
 import NewProjectForm from '../../../components/NewProjectForm';
 import ProjectAPI from '../../../utils/API-project';
-import BudgetAPI from '../../../utils/API-budget';
-import TaskAPI from '../../../utils/API-task';
-import AssigneeAPI from '../../../utils/API-assignee';
 import LogoutButton from '../../../components/LogoutButton';
-import Tasks from "../../../components/Tasks";
-import Budget from "../../../components/Budget";
-import Assignees from "../../../components/Assignees";
 import "./Profile.css";
+
+import Chart1 from '../../../components/chart1'
+import Chart2 from '../../../components/chart2'
 
 class Profile extends Component {
     constructor(props) {
@@ -24,14 +21,22 @@ class Profile extends Component {
         this.state = {
             userAccount: false,
             edit: false,
-            budget: {},
-            tasks: {},
-            assignees: {},
+            selectedProject: -1,
+            budgetTotal: "",
+            budgetDesign: "",
+            budgetEngineering: "",
+            budgetFinance: "",
+            budgetHR: "",
+            budgetMarketing: "",
+            budgetSales: "",
+            budgetSecurity: "",
+            tasks: [],
+            assignees: [],
             projects: []
         }
     }
 
-    componentWillMount() {
+    componentDidMount() {
         ProjectAPI.findProjects().then((res) => {
             this.setState({ projects: res.data })
         });
@@ -45,53 +50,21 @@ class Profile extends Component {
                     isLoggedIn: response
                 })
 
-
                 if (!response) {
                     window.location.href = "/"
                 }
-
             })
             .catch(err => console.log("err", err))
     }
 
-    // loadProject = id => {
-    //     BudgetAPI.getBudget(id).then(res => {
-    //         console.log(res.data)
-    //         this.setState({
-    //             budget: res.data
-    //         })
-    //     });
-    //     console.log("========================");
-    //     TaskAPI.getTasks(id).then(res => {
-    //         console.log(res.data)
-    //         this.setState({
-    //             budget: res.data
-    //         })
-    //     });
-    //     console.log("========================");
-    //     AssigneeAPI.getAssignees(id).then(res => {
-    //         console.log(res.data)
-    //         this.setState({
-    //             budget: res.data
-    //         })
-    //     });
-    // }
+    loadProject = id => {
 
-    // renderAccountContent() {
-    //     return (
-    //         <Router>
-    //             <div>
-    //                 {/* <Sidenav /> */}
-    //                 <Switch>
-    //                     {/* we need to change :uuid and :projectid with pulled info at state */}
-    //                     {/* <Route exact path="/dashboard/:uuid/:projectid" component={Dashboard}/> */}
-    //                     {/* <Route exact path ="/dashboard/:uuid/:projectid/form" component={Form}  /> */}
-    //                 </Switch>
-    //                 <Button float="none" handleBtnClick={this.handlelogout.bind(this)}>logout</Button>
-    //             </div>
-    //         </Router>
-    //     )
-    // }
+        const found = this.state.projects.find((project) => project.id === id)
+
+        this.setState({
+            selectedProject: found.id
+        });
+    }
 
     handleEdit = () => {
         if (this.state.edit === false) {
@@ -117,7 +90,7 @@ class Profile extends Component {
                         <Sidenav>
                             <div className="centerButtons">
                                 {this.state.projects.map(project => (
-                                    <ProjectButton id={project.id} name={project.name} key={project.id} />
+                                    <ProjectButton click={this.loadProject} id={project.id} name={project.name} key={project.id} />
                                 ))}
                                 <CreateProject edit={this.handleEdit} />
                                 <LogoutButton logout={this.handlelogout.bind(this)} />
@@ -127,11 +100,11 @@ class Profile extends Component {
                     <Col className="xl10 l9">
                         {
                             !this.state.edit ?
-                                <Dashboard>
-                                    {/* <Tasks tasks={this.state.tasks} />
-                                    <Assignees assignees={this.state.assignees} />
-                                    <Budget budget={this.state.budget} /> */}
-                                </Dashboard> : <NewProjectForm edit={this.handleEdit}  />
+                            <Dashboard projectID={this.state.selectedProject}>
+                                <Chart1/>
+                                <Chart2/>
+                            </Dashboard>
+                                : <NewProjectForm edit={this.handleEdit} />
                         }
                     </Col>
                 </Row >
