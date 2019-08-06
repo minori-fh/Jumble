@@ -33,7 +33,6 @@ class Profile extends Component {
             tasks: [],
             assignees: [],
             projects: [],
-            projectName: ""
         }
     }
 
@@ -105,7 +104,7 @@ class Profile extends Component {
                                 <Chart1/>
                                 <Chart2/>
                             </Dashboard>
-                                : <NewProjectForm edit={this.handleEdit}  click={this.loadProject}/>
+                                : <NewProjectForm edit={this.handleEdit} />
                         }
                     </Col>
                 </Row >

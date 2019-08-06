@@ -13,7 +13,7 @@ function Dashboard(props) {
                         <Assignees projectID={props.projectID} />
                         <Budget projectID={props.projectID}/>
                     </div>
-                    : <div>{console.log(props)}</div>
+                    : <div>ok</div>
             }
             {props.children}
         </div>
