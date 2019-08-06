@@ -11,7 +11,7 @@ class Tasks extends Component {
 
     componentDidMount() {
         TaskAPI.getTasks(this.props.projectID).then(res => {
-            console.log(res.data),
+            console.log(res.data)
                 this.setState({
                     tasks: res.data
                 })

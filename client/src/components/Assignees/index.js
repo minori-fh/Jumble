@@ -11,7 +11,7 @@ class Assignees extends Component {
 
     componentDidMount() {
         AssigneeAPI.getAssignees(this.props.projectID).then(res => {
-            console.log(res.data),
+            console.log(res.data)
                 this.setState({
                     assignees: res.data
                 })
