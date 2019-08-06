@@ -19,6 +19,19 @@ class Assignees extends Component {
             .catch(err => console.log(err.message));
     }
 
+    componentDidUpdate(prevProps) {
+
+        if (this.props.projectID !== prevProps.projectID) {
+            AssigneeAPI.getAssignees(this.props.projectID).then(res => {
+                console.log(res.data)
+                    this.setState({
+                        assignees: res.data
+                    })
+            })
+                .catch(err => console.log(err.message));
+          }        
+    }
+
     render() {
         return (
             <div>
