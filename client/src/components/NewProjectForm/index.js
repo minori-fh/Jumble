@@ -93,6 +93,23 @@ class NewProjectForm extends Component {
 
     dashboard = (props) => {
         (props.edit())
+        // window.location.reload(false);
+        API.getProject(this.state.projectID)
+            .then(result => {
+                console.log("this is the result on the of pulling the saved project", result)
+            })
+        APIBudget.getBudget(this.state.projectID)
+            .then(result => {
+                console.log("this is the result on the of pulling the saved Budget", result)
+            })
+        APITask.getTasks(this.state.projectID)
+            .then(result => {
+                console.log("this is the result on the of pulling the saved Task", result)
+            })
+        APIAssignee.getAssignees(this.state.projectID)
+            .then(result => {
+                console.log("this is the result on the of pulling the saved Assignee", result)
+            })
     }
 
     formRender() {
@@ -141,13 +158,13 @@ class NewProjectForm extends Component {
                             onChange={this.handleInputChange}
                             name="assignee"
                         />
-                        <button id="submit" onClick={this.saveBudgetTask}>Submit</button>
+                        <button id="submit" onClick={this.saveBudgetTask} >Submit</button>
                     </form>
                 </div>
             )
-
         }
     }
+
     render() {
         return (
             <div>

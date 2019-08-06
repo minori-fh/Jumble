@@ -13,6 +13,8 @@ import "./Profile.css";
 
 import Chart1 from '../../../components/chart1'
 import Chart2 from '../../../components/chart2'
+import Chart3 from '../../../components/chart3';
+import Chart4 from '../../../components/chart4';
 
 class Profile extends Component {
     constructor(props) {
@@ -31,7 +33,8 @@ class Profile extends Component {
             budgetSecurity: "",
             tasks: [],
             assignees: [],
-            projects: []
+            projects: [],
+            chartSwitch: false
         }
     }
 
@@ -40,6 +43,8 @@ class Profile extends Component {
             this.setState({ projects: res.data })
         });
     }
+
+  
 
     handlelogout() {
         Actions.handlelogout()
@@ -76,6 +81,19 @@ class Profile extends Component {
         }
     }
 
+    handleChartSwitch = () => {
+        if (this.state.chartSwitch === false) {
+            this.setState({
+                chartSwitch: true
+            })
+        }
+        else {
+            this.setState({
+                chartSwitch: false
+            })
+        }
+    }
+
     render() {
         return (
             <div>
@@ -87,7 +105,7 @@ class Profile extends Component {
                         <Sidenav>
                             <div className="centerButtons">
                                 {this.state.projects.map(project => (
-                                    <ProjectButton click={this.loadProject} id={project.id} name={project.name} key={project.id} />
+                                    <ProjectButton click={this.loadProject} id={project.id} name={project.name} key={project.id}  />
                                 ))}
                                 <CreateProject edit={this.handleEdit} />
                                 <LogoutButton logout={this.handlelogout.bind(this)} />
@@ -98,6 +116,10 @@ class Profile extends Component {
                         {
                             !this.state.edit ?
                             <Dashboard projectID={this.state.selectedProject}>
+                                {!this.state.chartSwitch ? <Chart1 /> : <Chart4/>}
+                                <button onClick={this.handleChartSwitch} >Switch</button>
+                                <Chart2/>
+                                <Chart3/>
                             </Dashboard>
                                 : <NewProjectForm edit={this.handleEdit} />
                         }
