@@ -89,13 +89,10 @@ class NewProjectForm extends Component {
             .catch(err => console.log(err.message));
         this.dashboard(this.props)
 
-
     }
-
 
     dashboard = (props) => {
         (props.edit())
-
     }
 
     formRender() {

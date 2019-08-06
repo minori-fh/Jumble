@@ -50,11 +50,12 @@ class Tasks extends Component {
         }
 
         TaskAPI.createTask(task).then(res => {
-            console.log(res.data)
+            console.log("NEWTASK",res.data)
             let tasksList = this.state.tasks
             tasksList.push(res.data)
             this.setState({
-                tasks: tasksList
+                tasks: tasksList,
+                newTask: ""
             })
         })
             .catch(err => console.log(err.message));
