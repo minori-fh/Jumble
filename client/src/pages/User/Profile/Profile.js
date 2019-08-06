@@ -1,10 +1,9 @@
-
 import React, { Component } from 'react';
 import Actions from "../../../utils/API";
 import Dashboard from '../../../components/Dashboard';
-import { Col, Row } from "../../../components/Grid"
-import Navbar from "../../../components/Navbar"
-import Sidenav from "../../../components/Sidenav"
+import { Col, Row } from "../../../components/Grid";
+import Navbar from "../../../components/Navbar";
+import Sidenav from "../../../components/Sidenav";
 import CreateProject from '../../../components/CreateProject';
 import ProjectButton from '../../../components/ProjectButton';
 import NewProjectForm from '../../../components/NewProjectForm';
@@ -64,10 +63,8 @@ class Profile extends Component {
 
     loadProject = id => {
 
-        const found = this.state.projects.find((project) => project.id === id)
-
         this.setState({
-            selectedProject: found.id
+            selectedProject: id
         });
     }
 
