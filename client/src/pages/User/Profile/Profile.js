@@ -44,6 +44,8 @@ class Profile extends Component {
         });
     }
 
+  
+
     handlelogout() {
         Actions.handlelogout()
             .then(data => { return data.json() })
@@ -103,7 +105,7 @@ class Profile extends Component {
                         <Sidenav>
                             <div className="centerButtons">
                                 {this.state.projects.map(project => (
-                                    <ProjectButton click={this.loadProject} id={project.id} name={project.name} key={project.id} />
+                                    <ProjectButton click={this.loadProject} id={project.id} name={project.name} key={project.id}  />
                                 ))}
                                 <CreateProject edit={this.handleEdit} />
                                 <LogoutButton logout={this.handlelogout.bind(this)} />
@@ -113,12 +115,12 @@ class Profile extends Component {
                     <Col className="xl10 l9">
                         {
                             !this.state.edit ?
-                                <Dashboard projectID={this.state.selectedProject}>
-                                    {!this.state.chartSwitch ? <Chart1 /> : <Chart4 />}
-                                    <button onClick={this.handleChartSwitch} >Switch</button>
-                                    <Chart2 />
-                                    <Chart3 />
-                                </Dashboard>
+                            <Dashboard projectID={this.state.selectedProject}>
+                                {!this.state.chartSwitch ? <Chart1 /> : <Chart4/>}
+                                <button onClick={this.handleChartSwitch} >Switch</button>
+                                <Chart2/>
+                                <Chart3/>
+                            </Dashboard>
                                 : <NewProjectForm edit={this.handleEdit} />
                         }
                     </Col>
