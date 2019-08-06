@@ -93,7 +93,6 @@ class NewProjectForm extends Component {
 
     dashboard = (props) => {
         (props.edit())
-
     }
 
     formRender() {
