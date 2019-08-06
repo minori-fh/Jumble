@@ -1,35 +1,32 @@
-import React from 'react';
+import React, {Component} from 'react';
 var Chart = require("chart.js")
 
-var ctx = document.getElementById("chart1")
+class Chart1 extends Component {
 
-var data = {
-    datasets: [{
-        data: [10, 20, 30]
-    }],
+    constructor(props){
+        super(props);
+        this.chart1Ref = React.createRef(); 
+    }
 
-    // These labels appear in the legend and in the tooltips when hovering different arcs
-    labels: [
-        'Red',
-        'Yellow',
-        'Blue'
-    ]
+    componentDidMount() {
+        this.chart1 = new Chart(this.chart1Ref.current, {
+          type: 'doughnut',
+          data: {
+            labels: ['Red', 'Yellow', 'Blue'],
+            datasets: [{
+              data: [10, 20, 30],
+              backgroundColor: ['#a8e0ff', '#8ee3f5', '#70cad1']
+            }]
+          }
+        });
+      }
+
+    render(){
+        return(
+            <canvas className = 'chart' ref={this.chart1Ref}/>
+        )
+    };
+
 };
 
-var Chart1 = new Chart(ctx, {
-    type: 'doughnut',
-    data: data,
-    options: options
-});
-
-function Chart1(){
-
-    return(
-        <div>
-            <canvas className = 'chart' id='chart1'>
-            </canvas>
-        </div>
-    )
-}
-
-export default Chart1
+export default Chart1;
