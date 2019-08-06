@@ -32,7 +32,8 @@ class Profile extends Component {
             budgetSecurity: "",
             tasks: [],
             assignees: [],
-            projects: []
+            projects: [],
+            projectName: ""
         }
     }
 
@@ -90,7 +91,7 @@ class Profile extends Component {
                         <Sidenav>
                             <div className="centerButtons">
                                 {this.state.projects.map(project => (
-                                    <ProjectButton click={this.loadProject} id={project.id} name={project.name} key={project.id} />
+                                    <ProjectButton click={this.loadProject} id={project.id} name={project.name} key={project.id}  />
                                 ))}
                                 <CreateProject edit={this.handleEdit} />
                                 <LogoutButton logout={this.handlelogout.bind(this)} />
@@ -104,7 +105,7 @@ class Profile extends Component {
                                 <Chart1/>
                                 <Chart2/>
                             </Dashboard>
-                                : <NewProjectForm edit={this.handleEdit} />
+                                : <NewProjectForm edit={this.handleEdit}  click={this.loadProject}/>
                         }
                     </Col>
                 </Row >

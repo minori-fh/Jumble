@@ -7,13 +7,13 @@ function Dashboard(props) {
     return (
         <div>
             {
-                props.projectID != -1 ?
+                props.projectID !== -1 ?
                     <div>
                         <Tasks projectID={props.projectID} />
                         <Assignees projectID={props.projectID} />
                         <Budget projectID={props.projectID}/>
                     </div>
-                    : <div>OK</div>
+                    : <div>{console.log(props)}</div>
             }
             {props.children}
         </div>

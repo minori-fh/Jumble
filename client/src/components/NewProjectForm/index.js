@@ -37,11 +37,9 @@ class NewProjectForm extends Component {
 
             API.createProject(body)
                 .then(res => {
-                    console.log(res.data.id)
                     this.setState({
                         projectID: res.data.id
                     });
-                    console.log("--------------" + this.state.projectID)
                 })
                 .catch(err => console.log(err.message));
         }
@@ -94,8 +92,25 @@ class NewProjectForm extends Component {
     
 
     dashboard = (props)=> {
-        (props.edit())
-     
+        // (props.edit())
+        window.location.reload();
+        API.getProject(this.state.projectID)
+        .then(result =>{
+            console.log("this is the result on the of pulling the saved project",result)
+        })
+        APIBudget.getBudget(this.state.projectID)
+        .then(result =>{
+            console.log("this is the result on the of pulling the saved Budget",result)
+        })
+        APITask.getTasks(this.state.projectID)
+        .then(result =>{
+            console.log("this is the result on the of pulling the saved Task",result)
+        })
+        APIAssignee.getAssignees(this.state.projectID)
+        .then(result =>{
+            console.log("this is the result on the of pulling the saved Assignee",result)
+        })
+        // (props.click(this.state.projectID))
     } 
 
         formRender() {
@@ -148,9 +163,12 @@ class NewProjectForm extends Component {
                         </form>
                     </div>
                 )
-
             }
         }
+
+
+
+
         render() {
             return (
                 <div>
