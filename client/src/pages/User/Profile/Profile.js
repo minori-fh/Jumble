@@ -76,9 +76,9 @@ class Profile extends Component {
             })
         }
         else {
-            this.setState({
-                edit: false
-            })
+            ProjectAPI.findProjects().then((res) => {
+                this.setState({ projects: res.data, edit: false})
+            });
         }
     }
 
@@ -116,12 +116,12 @@ class Profile extends Component {
                     <Col className="xl10 l9">
                         {
                             !this.state.edit ?
-                            <Dashboard projectID={this.state.selectedProject}>
-                                {!this.state.chartSwitch ? <Chart1 /> : <Chart4/>}
-                                <button onClick={this.handleChartSwitch} >Switch</button>
-                                <Chart2/>
-                                <Chart3/>
-                            </Dashboard>
+                                <Dashboard projectID={this.state.selectedProject}>
+                                    {!this.state.chartSwitch ? <Chart1 /> : <Chart4 />}
+                                    <button onClick={this.handleChartSwitch} >Switch</button>
+                                    <Chart2 />
+                                    <Chart3 />
+                                </Dashboard>
                                 : <NewProjectForm edit={this.handleEdit} />
                         }
                     </Col>
