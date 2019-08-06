@@ -1,13 +1,13 @@
 export default {
 	checkAuth: function(){
-		return fetch("https://jumbletron.herokuapp.com/auth", {
+		return fetch("/auth", {
       method: 'GET',
       credentials: 'include',
       mode: 'cors'
     });
 	},
 	handleLogin: function(userData){
-		return fetch("https://jumbletron.herokuapp.com/signin", {
+		return fetch("/signin", {
         method: 'POST',
         headers: {
             "Content-Type": "application/json; charset=utf-8"
@@ -18,7 +18,7 @@ export default {
       });
 	},
 	handleSignup: function(userData){
-		return fetch("https://jumbletron.herokuapp.com/signup", {
+		return fetch("/signup", {
       method: 'POST',
       headers: {
           "Content-Type": "application/json; charset=utf-8"
@@ -29,7 +29,7 @@ export default {
     });
 	},
 	handlelogout: function(){
-		return fetch("https://jumbletron.herokuapp.com/logout", {
+		return fetch("/logout", {
       method: 'GET',
       credentials: 'include',
       mode: 'cors'

@@ -3,7 +3,7 @@
   "homepage": "https://minori-fh.github.io/Jumble",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8000",
+  "proxy": "https://jumbletron.herokuapp.com",
   "dependencies": {
     "axios": "^0.19.0",
     "chart.js": "^2.8.0",
